@@ -1,0 +1,21 @@
+base_name: at2019aalc
+database_name: at2019aalc
+class_name: WiseDataByVisit
+filename: /Users/jannisnecker/Software/lancel_ir/lancel_ir/coordinates.csv
+n_chunks: 1
+timewise_instructions:
+  - get_photometric_data:
+      nthreads: 1
+      service: gator
+      mask_by_position: true
+timewise_sup_instructions:
+  - create_ampel_config_file:
+  - bayesian_blocks:
+      chunk: 0
+      t2units:
+          - bayesian
+      load_from_bigdata_dir: false
+      service: gator
+  - plot:
+        status: No further investigation
+        service: gator

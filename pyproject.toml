@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "lancel-ir"
+version = "0.1.0"
+description = "Get WISE difference photometry for AT2019aalc"
+authors = ["Jannis Necker <jannis.necker@desy.de>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+timewise-sup = "0.2.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
