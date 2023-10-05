@@ -1,5 +1,16 @@
 # WISE photometry for AT2019aalc
 
+Code to produce WISE difference photometry for AT2019aalc using the
+[Timewise Subtraction Pipeline](https://jannisnecker.pages.desy.de/timewise_sup/docs/index.html).
+
+## Prerequisites
+
+You have to have a `MongoDB` running. For installation on Mac see 
+[this](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/). 
+`timewise-sup` will connect to the database on the default port `27017`. 
+You can change this by setting the environment variable `TIMEWISE_SUP_MONGODB_PORT`.
+
+
 ## Installation
 
 ### 1. Clone this repository:
@@ -15,19 +26,14 @@ git clone
 ```bash
 poetry install
 ```
-#### Installation with `pip`
+On some platforms, `fastavro` does not play ball. Try running `pip install --no-build-isolation fastavro==1.6.1` 
+and then `poetry install` again.
+
+#### Installation with `pip`:
 
 ```bash
 pip install .
 ```
-
-
-## Prerequisites
-
-You have to have a `MongoDB` running. For installation on Mac see 
-[this](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-os-x/). 
-`timewise-sup` will connect to the database on the default port `27017`. 
-You can change this by setting the environment variable `TIMEWISE_SUP_MONGODB_PORT`.
 
 
 
