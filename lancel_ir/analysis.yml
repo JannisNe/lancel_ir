@@ -1,7 +1,7 @@
 base_name: at2019aalc
 database_name: at2019aalc
 class_name: WiseDataByVisit
-filename: /Users/jannisnecker/Software/lancel_ir/lancel_ir/coordinates.csv
+filename: </path/to/repo>lancel_ir/coordinates.csv
 n_chunks: 1
 timewise_instructions:
   - get_photometric_data:
