@@ -16,7 +16,7 @@ You can change this by setting the environment variable `TIMEWISE_SUP_MONGODB_PO
 ### 1. Clone this repository:
 
 ```bash
-git clone 
+git clone git@github.com:JannisNe/lancel_ir.git
 ```
 
 ### 2. Install the package
@@ -24,6 +24,7 @@ git clone
 #### Recommended: installation via `poetry`:
 
 ```bash
+cd lancel_ir
 poetry install
 ```
 On some platforms, `fastavro` does not play ball. Try running `pip install --no-build-isolation fastavro==1.6.1` 
