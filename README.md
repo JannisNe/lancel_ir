@@ -10,6 +10,8 @@ You have to have a `MongoDB` running. For installation on Mac see
 `timewise-sup` will connect to the database on the default port `27017`. 
 You can change this by setting the environment variable `TIMEWISE_SUP_MONGODB_PORT`.
 
+All data will be downloaded into into the `timewise` data directory which defaults to 
+`$HOME/.timewise`. You can change this by setting the environment variable `TIMEWISE_DATA`.
 
 ## Installation
 
@@ -35,7 +37,6 @@ and then `poetry install` again.
 ```bash
 pip install .
 ```
-
 
 
 ## Usage
