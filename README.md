@@ -11,7 +11,7 @@ You have to have a `MongoDB` running. For installation on Mac see
 You can change this by setting the environment variable `TIMEWISE_SUP_MONGODB_PORT`.
 
 All data will be downloaded into into the `timewise` data directory which defaults to 
-`$HOME/.timewise`. You can change this by setting the environment variable `TIMEWISE_DATA`.
+`$HOME/`. You can change this by setting the environment variable `TIMEWISE_DATA`.
 
 ## Installation
 
