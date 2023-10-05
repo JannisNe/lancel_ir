@@ -6,7 +6,7 @@ from timewise_sup.meta_analysis.baseline_subtraction import get_single_lightcurv
 def get_lancel_ir_lightcurves():
 
     this_dir = Path(__file__).parent
-    config_file = this_dir / "analysis.yaml"
+    config_file = this_dir / "analysis.yml"
     config = TimewiseSUPConfigLoader.read_yaml(config_file).parse_config()
 
     return get_single_lightcurve(
