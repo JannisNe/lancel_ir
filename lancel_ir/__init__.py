@@ -11,6 +11,7 @@ logger.addHandler(logging.getLogger("timewise").handlers[0])
 redshift = 0.036
 pre_flare_mjd = 58500
 second_flare_mjd = 60000
+peak_mjds = 58800, 59000
 
 
 def get_config():
@@ -54,19 +55,24 @@ def lightcurve_analysis():
     pre_flare_lc = lc[pre_flare_mask]
     flare_lc = lc[~pre_flare_mask & ~second_flare_mask]
     second_flare_mask = lc[second_flare_mask]
+    peak = lc[(lc.mean_mjd > peak_mjds[0]) & (lc.mean_mjd < peak_mjds[1])]
 
     for b in ["W1", "W2"]:
         k = f"{b}_mean_flux_density"
         for df, when in zip([pre_flare_lc, flare_lc, second_flare_mask], ["pre-flare", "flare", "second-flare"]):
-            _var = abs(2.5 * np.log10(df[k].max() / df[k].min()))
+            _var = abs(2.5 * np.log10(df[k].max() / lc[k].min()))
             logger.info(f"{b} {when} variability: {_var:.2f} mag (until {pre_flare_mjd}) mjd")
 
+    zps = {b: config.wise_data.magnitude_zeropoints['F_nu'][b].to('mJy').value for b in ["W1", "W2"]}
     bsl = dict()
     for b in ["W1", "W2"]:
-        zp = config.wise_data.magnitude_zeropoints['F_nu'][b].to('mJy').value
         bsl[f"{b}_flux_density"] = pre_flare_lc[f"{b}_mean_flux_density"].median()
-        bsl[f"{b}_mag"] = -2.5 * np.log10(bsl[f"{b}_flux_density"] / zp)
+        bsl[f"{b}_mag"] = -2.5 * np.log10(bsl[f"{b}_flux_density"] / zps[b])
+        peak[f"{b}_mag"] = -2.5 * np.log10(peak[f"{b}_mean_flux_density"] / zps[b])
         logger.info(f"{b} baseline: {bsl[f'{b}_mag']:.2f} mag")
 
     baseline_color = bsl["W1_mag"] - bsl["W2_mag"]
     logger.info(f"baseline W1-W2 color: {baseline_color:.2f} mag")
+    peak_color = peak["W1_mag"] - peak["W2_mag"]
+    logger.info(f"peak W1-W2 color: {peak_color.loc['14']} mag")
+
