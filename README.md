@@ -49,13 +49,19 @@ Make sure to change the path of the coordinates file to the right one depending 
 ### 2. Download and analyse the data
 
 ```bash
-timewise_sup lancel_ir/analysis.yml -l INFO
+timewise lancel_ir/analysis.yml -l INFO
 ```
 
-### 3. Load the data externally
+### 3. Make some plots and run some numbers
+    
+```bash
+python -m lancel_ir
+```
+
+### 4. Load the data externally
 
 ```python
-from lancel_ir import get_lancel_ir_lightcurves
-lightcurve = get_lancel_ir_lightcurves()  # returns a pandas.DataFrame
-print(lightcurve.columns)                 # prints the available columns
+from lancel_ir import get_lightcurve
+lightcurve = get_lightcurve()         # returns a pandas.DataFrame
+print(lightcurve.columns)             # prints the available columns
 ```

@@ -32,6 +32,15 @@ def sky_plot():
     config.wise_data.plot_diagnostic_binning(ind=0, service="gator")
 
 
+def get_lightcurve():
+    return pd.DataFrame.from_dict(
+        get_config()
+        .wise_data
+        .load_data_product(service="gator")
+        ["0"]["timewise_lightcurve"]
+    )
+
+
 def lightcurve_analysis():
     logger.info("calculating pre-flare variability")
     config = get_config()
